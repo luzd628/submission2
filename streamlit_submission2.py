@@ -39,7 +39,7 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 with st.form("data_form"):
   marital_status = st.selectbox(
       label="Pilih Status Perkawinan",
-      options=(1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum")
+      options={1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum"}
   )
   application_mode = st.selectbox(
       label="Metode Pendaftaran",
