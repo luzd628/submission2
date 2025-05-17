@@ -241,6 +241,13 @@ with st.form("data_form"):
       step=1
   )
 
+  total_curricular_enrolled = st.number_input(
+      label = "Total SKS Enrolled",
+      min_value=0,
+      value=0,
+      step=1
+  )
+
   total_curricular_approved = st.number_input(
       label = "Total SKS yang diterima",
       min_value=0,
@@ -271,7 +278,7 @@ with st.form("data_form"):
             'Application_mode': [application_mode],
             'Application_order': [application_order],
             'Course': [course],
-            'Daytime_evening_attendance': [daytime_evening_attendance],
+            'Daytime_evening_attendance': [daytime_attendance],
             'Previous_qualification': [previous_qualification],
             'Previous_qualification_grade': [previous_qualification_grade],
             'Mothers_occupation': [mothers_occupation],
