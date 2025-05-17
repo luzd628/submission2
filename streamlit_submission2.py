@@ -5,8 +5,11 @@ import pickle
 import numpy as np
 
 # Load Model
-with open('model.pkl','rb') as file:
-  model = pickle.load(file)
+try:
+  with open('model.pkl','rb') as file:
+    model = pickle.load(file)
+except Exception as e:
+  print("Erorr while load model")
 
 # Function Predict
 def predict(input_data):
