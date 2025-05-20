@@ -243,7 +243,7 @@ with st.form("data_form"):
       )
 
 
-  st.subheader("")
+  st.subheader("Data nilai")
   col9, col10,  = st.columns(2)
   # Nlai matkul pada semester 1
   with col9:
@@ -265,6 +265,7 @@ with st.form("data_form"):
           step=0.1
       )
 
+  st.subheader("Data kondisi ekonomi secara umum")
   # Tingkat Pengangguran
   unemployment_rate = st.number_input(
       label="Tingkat Pengangguran"
@@ -284,7 +285,7 @@ with st.form("data_form"):
       min_value=0.0,
   )
 
-  
+  st.subheader("Data SKS")
   # Sks yang credited
   total_curricular_credited = st.number_input(
       label = "Total SKS Credited",
