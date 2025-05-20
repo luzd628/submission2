@@ -34,22 +34,20 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 with st.form("data_form"):
   st.subheader("Data Pribadi")
   # status perkawinan
-  marital_status_options = [1, 2, 3, 4, 5, 6]
   marital_status_labels= {
       1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum"
   }
   marital_status = st.selectbox(
       label="Pilih Status Perkawinan",
-      options=marital_status_options,
+      options=list(marital_status_labels.keys()),
       format_func=lambda x: marital_status_labels[x]
   )
 
   # Jenis Kelamin
-  gender_options = [0,1]
   gender_labels = { 1:"Laki-laki", 0:"Perempuan"}
   gender = st.selectbox(
       label="Jenis Kelamin",
-      options=gender_options,
+      options=list(gender_labels.keys()),
       format_func=lambda x: gender_labels[x]
   )
 
