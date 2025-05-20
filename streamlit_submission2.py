@@ -32,7 +32,7 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 
 # Form Input
 with st.form("data_form"):
-  col1, col2, col3, col4, col5, col6, col7, col8 = st.columns(2)
+  col1, col2, col3, col4, col5, col6, col7, col8 = st.columns(8)
 
   
   # status perkawinan
