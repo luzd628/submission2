@@ -32,41 +32,47 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 
 # Form Input
 with st.form("data_form"):
+  col1, col2 = st.columns(2)
 
+  
   # status perkawinan
-  marital_status_options = [1, 2, 3, 4, 5, 6]
-  marital_status_labels= {
-      1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum"
-  }
-  marital_status = st.selectbox(
-      label="Pilih Status Perkawinan",
-      options=marital_status_options,
-      format_func=lambda x: marital_status_labels[x]
-  )
-  application_mode = st.selectbox(
-      label="Metode Pendaftaran",
-      options={
-          1 : "Tahap 1 - Kontingen umum",
-          2 : "Peraturan No. 612/93",
-          5 : "Tahap 1 - Kontingen khusus (Pulau Azores)",
-          7 : "Pemilik gelar pendidikan tinggi lainnya",
-          10 : "Peraturan No. 854-B/99",
-          15 : "Mahasiswa internasional (sarjana)",
-          16 : "Tahap 1 - Kontingen khusus (Pulau Madeira)",
-          17 : "Tahap 2 - Kontingen umum",
-          18 : "Tahap 3 - Kontingen umum",
-          26 : "Peraturan No. 533-A/99, butir b2) (Rencana berbeda)",
-          27 : "Peraturan No. 533-A/99, butir b3) (Institusi lain)",
-          39 : "Usia di atas 23 tahun",
-          42 : "Transfer",
-          43 : "Ganti program studi",
-          44 : "Pemilik diploma spesialisasi teknologi",
-          51 : "Ganti institusi/program studi",
-          53 : "Pemilik diploma pendidikan jenjang pendek",
-          57 : "Ganti institusi/program studi (Internasional)"
-      },
-      index=0
-  )
+  with col1:
+      marital_status_options = [1, 2, 3, 4, 5, 6]
+      marital_status_labels= {
+          1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum"
+      }
+      marital_status = st.selectbox(
+          label="Pilih Status Perkawinan",
+          options=marital_status_options,
+          format_func=lambda x: marital_status_labels[x]
+      )
+
+  # Metode pendaftaran
+  with col2:
+      application_mode = st.selectbox(
+          label="Metode Pendaftaran",
+          options={
+              1 : "Tahap 1 - Kontingen umum",
+              2 : "Peraturan No. 612/93",
+              5 : "Tahap 1 - Kontingen khusus (Pulau Azores)",
+              7 : "Pemilik gelar pendidikan tinggi lainnya",
+              10 : "Peraturan No. 854-B/99",
+              15 : "Mahasiswa internasional (sarjana)",
+              16 : "Tahap 1 - Kontingen khusus (Pulau Madeira)",
+              17 : "Tahap 2 - Kontingen umum",
+              18 : "Tahap 3 - Kontingen umum",
+              26 : "Peraturan No. 533-A/99, butir b2) (Rencana berbeda)",
+              27 : "Peraturan No. 533-A/99, butir b3) (Institusi lain)",
+              39 : "Usia di atas 23 tahun",
+              42 : "Transfer",
+              43 : "Ganti program studi",
+              44 : "Pemilik diploma spesialisasi teknologi",
+              51 : "Ganti institusi/program studi",
+              53 : "Pemilik diploma pendidikan jenjang pendek",
+              57 : "Ganti institusi/program studi (Internasional)"
+          },
+          index=0
+      )
 
   application_order = st.number_input(
       label="Urutan Pendaftaran",
