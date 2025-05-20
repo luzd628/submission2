@@ -78,6 +78,7 @@ with st.form("data_form"):
       index=0
   )
 
+  st.subheader("Data Pendaftaran")
   # Umur saat pendaftaran
   age_at_enrollment = st.number_input(
       label="Usia Saat Pendaftaran",
@@ -122,7 +123,17 @@ with st.form("data_form"):
           value=0,
           step=1
       )
+    
+  # Nilai Ujian Pendaftaran
+  admission_grade = st.number_input(
+      label="Nilai Ujian Pendaftaran Masuk",
+      min_value=0.0,
+      max_value=200.0,
+      value=100.0,
+      step=0.1
+  )
 
+  st.subheader("Data pendidikan Terakhir")
   col3, col4,  = st.columns(2)
   # Pendidikan Terakhir
   with col3:
@@ -160,6 +171,7 @@ with st.form("data_form"):
           step=0.1
       )
 
+  st.subheader("Data Pekerjaan orang tua")
   col5, col6,  = st.columns(2)
   # Pekerjaan Ibu
   with col5:
@@ -181,15 +193,7 @@ with st.form("data_form"):
           index=0
       )
 
-  # Nilai Ujian Pendaftaran
-  admission_grade = st.number_input(
-      label="Nilai Ujian Pendaftaran Masuk",
-      min_value=0.0,
-      max_value=200.0,
-      value=100.0,
-      step=0.1
-  )
-
+  st.subheader("Data tentang mahasiswa")
   # Waktu kehadiran
   daytime_attendance = st.selectbox(
       label="Waktu Kehadiran",
@@ -207,6 +211,17 @@ with st.form("data_form"):
       index=0
   )
 
+  # Pemegang Beasiswa
+  scholarship_holder = st.selectbox(
+      label="Apakah Penerima Beasiswa",
+      options={
+          1:"Ya",
+          0:"Tidak"
+      },
+      index=0
+  )
+
+  st.subheader("Data administrasi")
   col7, col8,  = st.columns(2)
   # Pembayaran terlambat
   with col7:
@@ -227,16 +242,8 @@ with st.form("data_form"):
           index=0
       )
 
-  # Pemegang Beasiswa
-  scholarship_holder = st.selectbox(
-      label="Apakah Penerima Beasiswa",
-      options={
-          1:"Ya",
-          0:"Tidak"
-      },
-      index=0
-  )
 
+  st.subheader("")
   col9, col10,  = st.columns(2)
   # Nlai matkul pada semester 1
   with col9:
