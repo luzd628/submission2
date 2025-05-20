@@ -32,9 +32,16 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 
 # Form Input
 with st.form("data_form"):
+
+  # status perkawinan
+  marital_status_options = [1, 2, 3, 4, 5, 6]
+  marital_status_labels= {
+      1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum"
+  }
   marital_status = st.selectbox(
       label="Pilih Status Perkawinan",
-      options={1:"Lajang",2:"Menikah",3:"Duda/Janda",4:"Cerai",5:"Hidup Berasama tapi belum menikah",6:"Pisah Secara Hukum"}
+      options=marital_status_options,
+      format_func=lambda x: marital_status_labels[x]
   )
   application_mode = st.selectbox(
       label="Metode Pendaftaran",
@@ -174,7 +181,7 @@ with st.form("data_form"):
       label = "Apakah Biaya Kuliah bayar tepat waktu",
       options={
           1:"Ya",
-          2:"Tidak"
+          0:"Tidak"
       },
       index=0
   )
@@ -183,7 +190,7 @@ with st.form("data_form"):
       label="Jenis Kelamin",
       options={
           1:"Laki-laki",
-          2:"Perempuan"
+          0:"Perempuan"
       }
   )
 
