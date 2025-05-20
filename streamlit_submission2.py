@@ -91,31 +91,32 @@ with st.form("data_form"):
   col1, col2,  = st.columns(2)
   # Metode pendaftaran
   with col1:
+      application_mode_labels = {
+          1 : "Tahap 1 - Kontingen umum",
+          2 : "Peraturan No. 612/93",
+          5 : "Tahap 1 - Kontingen khusus (Pulau Azores)",
+          7 : "Pemilik gelar pendidikan tinggi lainnya",
+          10 : "Peraturan No. 854-B/99",
+          15 : "Mahasiswa internasional (sarjana)",
+          16 : "Tahap 1 - Kontingen khusus (Pulau Madeira)",
+          17 : "Tahap 2 - Kontingen umum",
+          18 : "Tahap 3 - Kontingen umum",
+          26 : "Peraturan No. 533-A/99, butir b2) (Rencana berbeda)",
+          27 : "Peraturan No. 533-A/99, butir b3) (Institusi lain)",
+          39 : "Usia di atas 23 tahun",
+          42 : "Transfer",
+          43 : "Ganti program studi",
+          44 : "Pemilik diploma spesialisasi teknologi",
+          51 : "Ganti institusi/program studi",
+          53 : "Pemilik diploma pendidikan jenjang pendek",
+          57 : "Ganti institusi/program studi (Internasional)"
+      }
+   
       application_mode = st.selectbox(
           label="Metode Pendaftaran",
-          options={
-              1 : "Tahap 1 - Kontingen umum",
-              2 : "Peraturan No. 612/93",
-              5 : "Tahap 1 - Kontingen khusus (Pulau Azores)",
-              7 : "Pemilik gelar pendidikan tinggi lainnya",
-              10 : "Peraturan No. 854-B/99",
-              15 : "Mahasiswa internasional (sarjana)",
-              16 : "Tahap 1 - Kontingen khusus (Pulau Madeira)",
-              17 : "Tahap 2 - Kontingen umum",
-              18 : "Tahap 3 - Kontingen umum",
-              26 : "Peraturan No. 533-A/99, butir b2) (Rencana berbeda)",
-              27 : "Peraturan No. 533-A/99, butir b3) (Institusi lain)",
-              39 : "Usia di atas 23 tahun",
-              42 : "Transfer",
-              43 : "Ganti program studi",
-              44 : "Pemilik diploma spesialisasi teknologi",
-              51 : "Ganti institusi/program studi",
-              53 : "Pemilik diploma pendidikan jenjang pendek",
-              57 : "Ganti institusi/program studi (Internasional)"
-          },
-          index=0
+          options=list(application_mode_labels.keys()),
+          format_func=lambda x: application_mode_labels[x]
       )
-
   # Urutan pendaftaran
   with col2:
       application_order = st.number_input(
@@ -139,28 +140,29 @@ with st.form("data_form"):
   col3, col4,  = st.columns(2)
   # Pendidikan Terakhir
   with col3:
+      previous_qualification_labels = {
+          1: "Pendidikan Menengah",
+          2: "Pendidikan Tinggi - Sarjana",
+          3: "Pendidikan Tinggi - Gelar",
+          4: "Pendidikan Tinggi - Magister",
+          5: "Pendidikan Tinggi - Doktor",
+          6: "Pernah Mengikuti Pendidikan Tinggi",
+          9: "Kelas 12 - Tidak Tamat",
+          10: "Kelas 11 - Tidak Tamat",
+          12: "Lain-lain - Kelas 11",
+          14: "Kelas 10",
+          15: "Kelas 10 - Tidak Tamat",
+          19: "Pendidikan Dasar Siklus 3 (Kelas 9/10/11) atau setara",
+          38: "Pendidikan Dasar Siklus 2 (Kelas 6/7/8) atau setara",
+          39: "Kursus Spesialisasi Teknologi",
+          40: "Pendidikan Tinggi - Gelar (Siklus 1)",
+          42: "Kursus Teknik Tinggi Profesional",
+          43: "Pendidikan Tinggi - Magister (Siklus 2)"
+      }
       previous_qualification = st.selectbox(
           label="Pendidikan Terakhir",
-          options={
-              1: "Pendidikan Menengah",
-                2: "Pendidikan Tinggi - Sarjana",
-                3: "Pendidikan Tinggi - Gelar",
-                4: "Pendidikan Tinggi - Magister",
-                5: "Pendidikan Tinggi - Doktor",
-                6: "Pernah Mengikuti Pendidikan Tinggi",
-                9: "Kelas 12 - Tidak Tamat",
-                10: "Kelas 11 - Tidak Tamat",
-                12: "Lain-lain - Kelas 11",
-                14: "Kelas 10",
-                15: "Kelas 10 - Tidak Tamat",
-                19: "Pendidikan Dasar Siklus 3 (Kelas 9/10/11) atau setara",
-                38: "Pendidikan Dasar Siklus 2 (Kelas 6/7/8) atau setara",
-                39: "Kursus Spesialisasi Teknologi",
-                40: "Pendidikan Tinggi - Gelar (Siklus 1)",
-                42: "Kursus Teknik Tinggi Profesional",
-                43: "Pendidikan Tinggi - Magister (Siklus 2)"
-          },
-          index=0
+          options=list(previous_qualification_labels.keys()),
+          format_func=lambda x: previous_qualification_labels[x]
       )
 
   # Nilai Pendidikan Terakhir
@@ -177,30 +179,36 @@ with st.form("data_form"):
   col5, col6,  = st.columns(2)
   # Pekerjaan Ibu
   with col5:
+      mothers_occupation_labels = {
+              0: "Siswa", 1: "Perwakilan Kekuasaan Legislatif dan Badan Eksekutif, Direktur, dan Manajer Eksekutif", 2: "Spesialis dalam Kegiatan Intelektual dan Ilmiah", 3: "Teknisi dan Profesi Tingkat Menengah", 4: "Staf Administrasi", 5: "Pekerja Layanan Pribadi, Keamanan dan Keselamatan, dan Penjual", 6: "Petani dan Pekerja Terampil di Bidang Pertanian, Perikanan, dan Kehutanan", 7: "Pekerja Terampil di Bidang Industri, Konstruksi, dan Kerajinan", 8: "Operator Instalasi dan Mesin serta Pekerja Perakitan", 9: "Pekerja Tidak Terampil", 10: "Profesi Angkatan Bersenjata", 90: "Situasi Lain", 99: "(kosong)", 122: "Profesional Kesehatan", 123: "Guru", 125: "Spesialis di Bidang Teknologi Informasi dan Komunikasi (TIK)", 131: "Teknisi dan Profesional Tingkat Menengah di Bidang Sains dan Teknik", 132: "Teknisi dan Profesional Tingkat Menengah di Bidang Kesehatan", 134: "Teknisi Tingkat Menengah dari Layanan Hukum, Sosial, Olahraga, Budaya, dan Sejenisnya", 141: "Pekerja Kantor, Sekretaris Umum, dan Operator Pengolah Data", 143: "Operator Data, Akuntansi, Statistik, Layanan Keuangan, dan Registrasi", 144: "Staf Pendukung Administrasi Lainnya", 151: "Pekerja Layanan Pribadi", 152: "Penjual", 153: "Pekerja Perawatan Pribadi dan Sejenisnya", 171: "Pekerja Konstruksi Terampil dan Sejenisnya, Kecuali Tukang Listrik", 173: "Pekerja Terampil di Bidang Percetakan, Pembuatan Instrumen Presisi, Perhiasan, Pengrajin, dan Sejenisnya", 175: "Pekerja di Bidang Pengolahan Makanan, Pengolahan Kayu, Pakaian, dan Industri serta Kerajinan Lainnya", 191: "Pekerja Kebersihan", 192: "Pekerja Tidak Terampil di Bidang Pertanian, Peternakan, Perikanan, dan Kehutanan", 193: "Pekerja Tidak Terampil di Bidang Industri Ekstraktif, Konstruksi, Manufaktur, dan Transportasi", 194: "Asisten Persiapan Makanan"
+      }
+
       mothers_occupation = st.selectbox(
           label="Pekerjaan Ibu",
-          options={
-              0: "Siswa", 1: "Perwakilan Kekuasaan Legislatif dan Badan Eksekutif, Direktur, dan Manajer Eksekutif", 2: "Spesialis dalam Kegiatan Intelektual dan Ilmiah", 3: "Teknisi dan Profesi Tingkat Menengah", 4: "Staf Administrasi", 5: "Pekerja Layanan Pribadi, Keamanan dan Keselamatan, dan Penjual", 6: "Petani dan Pekerja Terampil di Bidang Pertanian, Perikanan, dan Kehutanan", 7: "Pekerja Terampil di Bidang Industri, Konstruksi, dan Kerajinan", 8: "Operator Instalasi dan Mesin serta Pekerja Perakitan", 9: "Pekerja Tidak Terampil", 10: "Profesi Angkatan Bersenjata", 90: "Situasi Lain", 99: "(kosong)", 122: "Profesional Kesehatan", 123: "Guru", 125: "Spesialis di Bidang Teknologi Informasi dan Komunikasi (TIK)", 131: "Teknisi dan Profesional Tingkat Menengah di Bidang Sains dan Teknik", 132: "Teknisi dan Profesional Tingkat Menengah di Bidang Kesehatan", 134: "Teknisi Tingkat Menengah dari Layanan Hukum, Sosial, Olahraga, Budaya, dan Sejenisnya", 141: "Pekerja Kantor, Sekretaris Umum, dan Operator Pengolah Data", 143: "Operator Data, Akuntansi, Statistik, Layanan Keuangan, dan Registrasi", 144: "Staf Pendukung Administrasi Lainnya", 151: "Pekerja Layanan Pribadi", 152: "Penjual", 153: "Pekerja Perawatan Pribadi dan Sejenisnya", 171: "Pekerja Konstruksi Terampil dan Sejenisnya, Kecuali Tukang Listrik", 173: "Pekerja Terampil di Bidang Percetakan, Pembuatan Instrumen Presisi, Perhiasan, Pengrajin, dan Sejenisnya", 175: "Pekerja di Bidang Pengolahan Makanan, Pengolahan Kayu, Pakaian, dan Industri serta Kerajinan Lainnya", 191: "Pekerja Kebersihan", 192: "Pekerja Tidak Terampil di Bidang Pertanian, Peternakan, Perikanan, dan Kehutanan", 193: "Pekerja Tidak Terampil di Bidang Industri Ekstraktif, Konstruksi, Manufaktur, dan Transportasi", 194: "Asisten Persiapan Makanan"
-          },
-          index=0
+          options=list(mothers_occupation_labels.keys()),
+          format_func=lambda x: mothers_occupation_labels[x]
       )
 
   # Pekerjaan Ayah
   with col6:
-      fathers_occupation = st.selectbox(
-          label="Pekerjaan Ayah",
-          options={
+      fathers_occupation_labels = {
               0: "Siswa", 1: "Perwakilan Kekuasaan Legislatif dan Badan Eksekutif, Direktur, dan Manajer Eksekutif", 2: "Spesialis dalam Kegiatan Intelektual dan Ilmiah", 3: "Teknisi dan Profesi Tingkat Menengah", 4: "Staf Administrasi", 5: "Pekerja Layanan Pribadi, Keamanan dan Keselamatan, dan Penjual", 6: "Petani dan Pekerja Terampil di Bidang Pertanian, Perikanan, dan Kehutanan", 7: "Pekerja Terampil di Bidang Industri, Konstruksi, dan Kerajinan", 8: "Operator Instalasi dan Mesin serta Pekerja Perakitan", 9: "Pekerja Tidak Terampil", 10: "Profesi Angkatan Bersenjata", 90: "Situasi Lain", 99: "(kosong)", 122: "Profesional Kesehatan", 123: "Guru", 125: "Spesialis di Bidang Teknologi Informasi dan Komunikasi (TIK)", 131: "Teknisi dan Profesional Tingkat Menengah di Bidang Sains dan Teknik", 132: "Teknisi dan Profesional Tingkat Menengah di Bidang Kesehatan", 134: "Teknisi Tingkat Menengah dari Layanan Hukum, Sosial, Olahraga, Budaya, dan Sejenisnya", 141: "Pekerja Kantor, Sekretaris Umum, dan Operator Pengolah Data", 143: "Operator Data, Akuntansi, Statistik, Layanan Keuangan, dan Registrasi", 144: "Staf Pendukung Administrasi Lainnya", 151: "Pekerja Layanan Pribadi", 152: "Penjual", 153: "Pekerja Perawatan Pribadi dan Sejenisnya", 171: "Pekerja Konstruksi Terampil dan Sejenisnya, Kecuali Tukang Listrik", 173: "Pekerja Terampil di Bidang Percetakan, Pembuatan Instrumen Presisi, Perhiasan, Pengrajin, dan Sejenisnya", 175: "Pekerja di Bidang Pengolahan Makanan, Pengolahan Kayu, Pakaian, dan Industri serta Kerajinan Lainnya", 191: "Pekerja Kebersihan", 192: "Pekerja Tidak Terampil di Bidang Pertanian, Peternakan, Perikanan, dan Kehutanan", 193: "Pekerja Tidak Terampil di Bidang Industri Ekstraktif, Konstruksi, Manufaktur, dan Transportasi", 194: "Asisten Persiapan Makanan"
-          },
-          index=0
+      }
+     
+      fathers_occupationst = st.selectbox(
+          label="Pekerjaan Ayah",
+          options=list(fathers_occupation_labels.keys()),
+          format_func=lambda x: fathers_occupation_labels[x]
       )
 
   st.subheader("Data tentang mahasiswa")
   # Waktu kehadiran
+  daytime_attendance_labels = {1:"Siang",0:"Malam"}
+  
   daytime_attendance = st.selectbox(
       label="Waktu Kehadiran",
-      options={1:"Siang",0:"Malam"},
-      index=0
+      options=list(daytime_attendance_labels.keys()),
+      format_func=lambda x: daytime_attendance_labels[x]
   )
 
   # Perantauan
