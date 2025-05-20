@@ -45,12 +45,12 @@ with st.form("data_form"):
   )
 
   # Jenis Kelamin
+  gender_options = [0,1]
+  gender_labels = { 1:"Laki-laki", 0:"Perempuan"}
   gender = st.selectbox(
       label="Jenis Kelamin",
-      options={
-          1:"Laki-laki",
-          0:"Perempuan"
-      }
+      options=gender_options,
+      format_func=lambda x: gender_labels[x]
   )
 
   # Prodi/Jurusan
