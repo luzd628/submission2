@@ -32,8 +32,6 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 
 # Form Input
 with st.form("data_form"):
-  col1, col2,  = st.columns(2)
-
   # status perkawinan
   marital_status_options = [1, 2, 3, 4, 5, 6]
   marital_status_labels= {
@@ -45,6 +43,7 @@ with st.form("data_form"):
       format_func=lambda x: marital_status_labels[x]
   )
 
+  col1, col2,  = st.columns(2)
   # Metode pendaftaran
   with col1:
       application_mode = st.selectbox(
