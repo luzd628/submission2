@@ -32,6 +32,7 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 
 # Form Input
 with st.form("data_form"):
+  st.subheader("Data Pribadi")
   # status perkawinan
   marital_status_options = [1, 2, 3, 4, 5, 6]
   marital_status_labels= {
@@ -41,6 +42,47 @@ with st.form("data_form"):
       label="Pilih Status Perkawinan",
       options=marital_status_options,
       format_func=lambda x: marital_status_labels[x]
+  )
+
+  # Jenis Kelamin
+  gender = st.selectbox(
+      label="Jenis Kelamin",
+      options={
+          1:"Laki-laki",
+          0:"Perempuan"
+      }
+  )
+
+  # Prodi/Jurusan
+  course = st.selectbox(
+      label="Jurusan",
+      options={
+          33: "Teknologi Produksi Biofuel",
+          171: "Desain Animasi dan Multimedia",
+          8014: "Pelayanan Sosial (kelas malam)",
+          9003: "Agronomi",
+          9070: "Desain Komunikasi",
+          9085: "Keperawatan Hewan",
+          9119: "Teknik Informatika",
+          9130: "Ekinkultur",
+          9147: "Manajemen",
+          9238: "Pelayanan Sosial",
+          9254: "Pariwisata",
+          9500: "Keperawatan",
+          9556: "Higiene Mulut",
+          9670: "Manajemen Periklanan dan Pemasaran",
+          9773: "Jurnalistik dan Komunikasi",
+          9853: "Pendidikan Dasar",
+          9991: "Manajemen (kelas malam)"
+      },
+      index=0
+  )
+
+  # Umur saat pendaftaran
+  age_at_enrollment = st.number_input(
+      label="Usia Saat Pendaftaran",
+      max_value=100,
+      step=1
   )
 
   col1, col2,  = st.columns(2)
@@ -80,38 +122,6 @@ with st.form("data_form"):
           value=0,
           step=1
       )
-
-  # Prodi/Jurusan
-  course = st.selectbox(
-      label="Jurusan",
-      options={
-          33: "Teknologi Produksi Biofuel",
-          171: "Desain Animasi dan Multimedia",
-          8014: "Pelayanan Sosial (kelas malam)",
-          9003: "Agronomi",
-          9070: "Desain Komunikasi",
-          9085: "Keperawatan Hewan",
-          9119: "Teknik Informatika",
-          9130: "Ekinkultur",
-          9147: "Manajemen",
-          9238: "Pelayanan Sosial",
-          9254: "Pariwisata",
-          9500: "Keperawatan",
-          9556: "Higiene Mulut",
-          9670: "Manajemen Periklanan dan Pemasaran",
-          9773: "Jurnalistik dan Komunikasi",
-          9853: "Pendidikan Dasar",
-          9991: "Manajemen (kelas malam)"
-      },
-      index=0
-  )
-
-  # Waktu kehadiran
-  daytime_attendance = st.selectbox(
-      label="Waktu Kehadiran",
-      options={1:"Siang",0:"Malam"},
-      index=0
-  )
 
   col3, col4,  = st.columns(2)
   # Pendidikan Terakhir
@@ -171,6 +181,7 @@ with st.form("data_form"):
           index=0
       )
 
+  # Nilai Ujian Pendaftaran
   admission_grade = st.number_input(
       label="Nilai Ujian Pendaftaran Masuk",
       min_value=0.0,
@@ -179,6 +190,14 @@ with st.form("data_form"):
       step=0.1
   )
 
+  # Waktu kehadiran
+  daytime_attendance = st.selectbox(
+      label="Waktu Kehadiran",
+      options={1:"Siang",0:"Malam"},
+      index=0
+  )
+
+  # Perantauan
   displaced = st.selectbox(
       label="Apakah Siswa merupakan Perantau",
       options={
@@ -188,29 +207,27 @@ with st.form("data_form"):
       index=0
   )
 
-  debtor = st.selectbox(
-      label="Apakah Siswa Memiliki Hutang?",
-      options={1: "Ya", 0: "Tidak"},
-      index=0
-  )
+  col7, col8,  = st.columns(2)
+  # Pembayaran terlambat
+  with col7:
+      tuition_fees_up_to_date = st.selectbox(
+          label = "Apakah Biaya Kuliah bayar tepat waktu",
+          options={
+              1:"Ya",
+              0:"Tidak"
+          },
+          index=0
+      )
 
-  tuition_fees_up_to_date = st.selectbox(
-      label = "Apakah Biaya Kuliah bayar tepat waktu",
-      options={
-          1:"Ya",
-          0:"Tidak"
-      },
-      index=0
-  )
+  # Hutang
+  with col8:
+      debtor = st.selectbox(
+          label="Apakah Siswa Memiliki Hutang?",
+          options={1: "Ya", 0: "Tidak"},
+          index=0
+      )
 
-  gender = st.selectbox(
-      label="Jenis Kelamin",
-      options={
-          1:"Laki-laki",
-          0:"Perempuan"
-      }
-  )
-
+  # Pemegang Beasiswa
   scholarship_holder = st.selectbox(
       label="Apakah Penerima Beasiswa",
       options={
@@ -220,32 +237,33 @@ with st.form("data_form"):
       index=0
   )
 
-  age_at_enrollment = st.number_input(
-      label="Usia Saat Pendaftaran",
-      max_value=100,
-      step=1
-  )
+  col9, col10,  = st.columns(2)
+  # Nlai matkul pada semester 1
+  with col9:
+      curricular_units_1st_sem_grade = st.number_input(
+            label="Nilai Mata Kuliah Semester 1",
+            min_value=0.0,
+            max_value=20.0,
+            value=10.0,
+            step=0.1
+      )
 
-  curricular_units_1st_sem_grade = st.number_input(
-        label="Nilai Mata Kuliah Semester 1",
-        min_value=0.0,
-        max_value=20.0,
-        value=10.0,
-        step=0.1
-  )
+  # Nlai matkul pada semester 2
+  with col10:
+      curricular_units_2nd_sem_grade = st.number_input(
+          label="Nilai Mata Kuliah Semester 2",
+          min_value=0.0,
+          max_value=20.0,
+          value=10.0,
+          step=0.1
+      )
 
-  curricular_units_2nd_sem_grade = st.number_input(
-      label="Nilai Mata Kuliah Semester 2",
-      min_value=0.0,
-      max_value=20.0,
-      value=10.0,
-      step=0.1
-  )
-
+  # Tingkat Pengangguran
   unemployment_rate = st.number_input(
       label="Tingkat Pengangguran"
   )
 
+  # Tingkat Inflasi
   inflation_rate = st.number_input(
       label="Tingkat Inflasi",
       min_value=0.0,
@@ -253,11 +271,14 @@ with st.form("data_form"):
       step=0.1
   )
 
+  # Indeks GDP
   gdp = st.number_input(
       label="Indeks GDP",
       min_value=0.0,
   )
 
+  
+  # Sks yang credited
   total_curricular_credited = st.number_input(
       label = "Total SKS Credited",
       min_value=0,
@@ -265,33 +286,43 @@ with st.form("data_form"):
       step=1
   )
 
-  total_curricular_enrolled = st.number_input(
-      label = "Total SKS Enrolled",
-      min_value=0,
-      value=0,
-      step=1
-  )
+  col11, col12,  = st.columns(2)
+  # Sks yg didaftarkan
+  with col11:
+      total_curricular_enrolled = st.number_input(
+          label = "Total SKS didaftarkan",
+          min_value=0,
+          value=0,
+          step=1
+      )
 
-  total_curricular_approved = st.number_input(
-      label = "Total SKS yang diterima",
-      min_value=0,
-      value=0,
-      step=1
-  )
+  # Sks yang lulus
+  with col12:
+      total_curricular_approved = st.number_input(
+          label = "Total SKS yang diterima/lulus",
+          min_value=0,
+          value=0,
+          step=1
+      )
 
-  total_curricular_evaluations = st.number_input(
-      label = "Total SKS yang di Evaluasi",
-      min_value=0,
-      value=0,
-      step=1
-  )
-
-  total_curricular_without_evaluation = st.number_input(
-      label = "Total SKS tanpa evaluasi",
-      min_value=0,
-      value=0,
-      step=1
-  )
+  col13, col14,  = st.columns(2)
+  # total sks evaluasi
+  with col13:
+      total_curricular_evaluations = st.number_input(
+          label = "Total SKS yang di Evaluasi",
+          min_value=0,
+          value=0,
+          step=1
+      )
+  
+  # total sks tanpa evaluasi
+  with col14:
+      total_curricular_without_evaluation = st.number_input(
+          label = "Total SKS tanpa evaluasi",
+          min_value=0,
+          value=0,
+          step=1
+      )
 
   submitted = st.form_submit_button("Prediksi")
 
