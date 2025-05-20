@@ -204,7 +204,6 @@ with st.form("data_form"):
   st.subheader("Data tentang mahasiswa")
   # Waktu kehadiran
   daytime_attendance_labels = {1:"Siang",0:"Malam"}
-  
   daytime_attendance = st.selectbox(
       label="Waktu Kehadiran",
       options=list(daytime_attendance_labels.keys()),
@@ -212,44 +211,39 @@ with st.form("data_form"):
   )
 
   # Perantauan
+  displaced_labels = {1:"Ya",2:"Tidak"}
   displaced = st.selectbox(
       label="Apakah Siswa merupakan Perantau",
-      options={
-          1:"Ya",
-          2:"Tidak"
-      },
-      index=0
+      options=list(displaced_labels.keys()),
+      format_func=lambda x: displaced_labels[x]
   )
 
   # Pemegang Beasiswa
+  scholarship_holder_labels = {1:"Ya",0:"Tidak"}
   scholarship_holder = st.selectbox(
       label="Apakah Penerima Beasiswa",
-      options={
-          1:"Ya",
-          0:"Tidak"
-      },
-      index=0
+      options=list(scholarship_holder_labels.keys()),
+      format_func=lambda x: scholarship_holder_labels[x]
   )
 
   st.subheader("Data administrasi")
   col7, col8,  = st.columns(2)
   # Pembayaran terlambat
   with col7:
+      tuition_fees_up_to_date_labels = {1:"Ya",0:"Tidak"}
       tuition_fees_up_to_date = st.selectbox(
           label = "Apakah Biaya Kuliah bayar tepat waktu",
-          options={
-              1:"Ya",
-              0:"Tidak"
-          },
-          index=0
+          options=list(tuition_fees_up_to_date_labels.keys()),
+          format_func=lambda x: tuition_fees_up_to_date_labels[x]
       )
 
   # Hutang
   with col8:
+      debtor_labels = {1: "Ya", 0: "Tidak"}
       debtor = st.selectbox(
           label="Apakah Siswa Memiliki Hutang?",
-          options={1: "Ya", 0: "Tidak"},
-          index=0
+          options=list(debtor_labels.keys()),
+          format_func=lambda x: debtor_labels[x]
       )
 
 
