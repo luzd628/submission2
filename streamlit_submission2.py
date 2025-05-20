@@ -32,9 +32,8 @@ st.write("Masukkan data siswa untuk memprediksi status kelulusan.")
 
 # Form Input
 with st.form("data_form"):
-  col1, col2, col3, col4, col5, col6, col7, col8 = st.columns(8)
+  col1, col2,  = st.columns(2)
 
-  
   # status perkawinan
   marital_status_options = [1, 2, 3, 4, 5, 6]
   marital_status_labels= {
@@ -115,6 +114,7 @@ with st.form("data_form"):
       index=0
   )
 
+  col3, col4,  = st.columns(2)
   # Pendidikan Terakhir
   with col3:
       previous_qualification = st.selectbox(
@@ -151,6 +151,7 @@ with st.form("data_form"):
           step=0.1
       )
 
+  col5, col6,  = st.columns(2)
   # Pekerjaan Ibu
   with col5:
       mothers_occupation = st.selectbox(
