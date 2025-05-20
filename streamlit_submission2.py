@@ -54,28 +54,30 @@ with st.form("data_form"):
   )
 
   # Prodi/Jurusan
+  course_labels ={
+      33: "Teknologi Produksi Biofuel",
+      171: "Desain Animasi dan Multimedia",
+      8014: "Pelayanan Sosial (kelas malam)",
+      9003: "Agronomi",
+      9070: "Desain Komunikasi",
+      9085: "Keperawatan Hewan",
+      9119: "Teknik Informatika",
+      9130: "Ekinkultur",
+      9147: "Manajemen",
+      9238: "Pelayanan Sosial",
+      9254: "Pariwisata",
+      9500: "Keperawatan",
+      9556: "Higiene Mulut",
+      9670: "Manajemen Periklanan dan Pemasaran",
+      9773: "Jurnalistik dan Komunikasi",
+      9853: "Pendidikan Dasar",
+      9991: "Manajemen (kelas malam)"
+  }
+    
   course = st.selectbox(
-      label="Jurusan",
-      options={
-          33: "Teknologi Produksi Biofuel",
-          171: "Desain Animasi dan Multimedia",
-          8014: "Pelayanan Sosial (kelas malam)",
-          9003: "Agronomi",
-          9070: "Desain Komunikasi",
-          9085: "Keperawatan Hewan",
-          9119: "Teknik Informatika",
-          9130: "Ekinkultur",
-          9147: "Manajemen",
-          9238: "Pelayanan Sosial",
-          9254: "Pariwisata",
-          9500: "Keperawatan",
-          9556: "Higiene Mulut",
-          9670: "Manajemen Periklanan dan Pemasaran",
-          9773: "Jurnalistik dan Komunikasi",
-          9853: "Pendidikan Dasar",
-          9991: "Manajemen (kelas malam)"
-      },
-      index=0
+    label="Program Studi",
+    options=list(course_labels.keys()),
+    format_func=lambda x: course_labels[x]
   )
 
   st.subheader("Data Pendaftaran")
